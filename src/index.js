@@ -1,9 +1,16 @@
-import Express from 'express';
+const express = require('express');
+const cors = require('cors')
 
-const route = Express();
+const routes = require('./routes/routes')
 
-route.get('/', (Request, Response) =>{
-    Response.json({mensage: "mensagem"})
-});
 
-route.listen(3333)
+const api = express();
+
+
+api.use(cors())
+api.use(express.json())
+api.use(routes)
+
+
+
+api.listen(3333)
